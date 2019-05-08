@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>JSF Spring Hibernate Integration</title>
+	<style type="text/css">
+</style>
+</h:head>
+<h:body>
+
+	<h:form id="form" prependId="false">
+		<p:panel id="panel" style="width:80%;">
+		<p:growl id="growl" />
+
+			<p:panelGrid>
+				<p:messages id="messages" closable="true" />
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="3">
+							<p:outputLabel value="Add a User" />
+						</p:column>
+					</p:row>
+				</f:facet>
+
+				<p:row>
+					<p:column>
+						<p:outputLabel value="User Name" for="userName" />
+					</p:column>
+					<p:column>
+						<p:inputText id="userName" value="#{userBean.user.userName}" autocomplete="false" required="true" />
+						<p:message for="userName" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Password" for="password" />
+					</p:column>
+					<p:column>
+						<p:password id="password" value="#{userBean.user.password}" autocomplete="false" required="true" />
+						<p:message for="password" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column colspan="2">
+						<p:commandButton value="Add User"
+							actionListener="#{userBean.saveUser()}" 
+							process="@this userName password" update="@form" />
+						<p:commandButton value="Reset" immediate="true" ajax="false">
+							<p:resetInput target="panel" />
+						</p:commandButton>
+					</p:column>
+				</p:row>
+
+			</p:panelGrid>
+
+			<br />
+			<br />
+
+			<p:dataTable id="userList" value="#{userBean.listUser()}" var="user">
+
+				<f:facet name="header">
+			        List of Users
+			    </f:facet>
+
+				<p:column headerText="Id">
+					<h:outputText value="#{user.id}" />
+				</p:column>
+
+				<p:column headerText="User Name">
+					<h:outputText value="#{user.userName}" />
+				</p:column>
+
+				<p:column headerText="User Password">
+					<h:outputText value="#{user.password}" />
+				</p:column>
+
+				<p:column headerText="Delete">
+					<p:commandButton actionListener="#{userBean.deleteUser(user)}" value="Delete" process="@this" update="@form" />
+				</p:column>
+
+				<f:facet name="footer">
+			        In total there are #{fn:length(userBean.listUser())} users.
+			    </f:facet>
+
+			</p:dataTable>
+
+			<br />
+
+			<p:commandButton actionListener="#{userBean.test()}" value="test" update="@form" />
+
+		</p:panel>
+	</h:form>
+
+</h:body>
+</html>

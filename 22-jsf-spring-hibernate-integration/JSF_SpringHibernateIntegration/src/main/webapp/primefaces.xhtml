@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head></h:head>
+
+<h:body>
+	<h:form>
+		<p:dataTable value="#{personBean.listPersons()}" var="p" >
+
+			<p:column>
+					<f:facet name="header">Id</f:facet>
+				#{p.id}
+			</p:column>
+
+			<p:column>
+					<f:facet name="header">Name</f:facet>
+				#{p.name}
+			</p:column>
+
+			<p:column>
+					<f:facet name="header">Country</f:facet>
+				#{p.country}
+			</p:column>
+
+		</p:dataTable>
+
+		<br />
+
+		<p:commandButton value="OK" />
+
+	</h:form>
+</h:body>
+
+</html>
