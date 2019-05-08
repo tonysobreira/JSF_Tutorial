@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+
+	<h3>Custom messages</h3>
+
+	<h:form>
+		<h:panelGrid columns="4">
+			<h:outputLabel value="Car Id" />
+			<h:inputText value="#{carBean.id}" id="id" required="true"
+				requiredMessage="Car Id is mandatory">
+			</h:inputText>
+			<h:message for="id" style="color: red" />
+			
+			<br />
+			<br />
+
+			<h:outputLabel value="Car Name" />
+			<h:inputText value="#{carBean.name}" id="name">
+				<f:validateLength minimum="5" maximum="10" for="name" id="name" />
+			</h:inputText>
+			<h:message for="name" style="color: red" />
+			
+		</h:panelGrid>
+		
+		<h:commandButton action="customerror" value="Submit" />
+	</h:form>
+
+</h:body>
+</html>
+

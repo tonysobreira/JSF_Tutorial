@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Facelet Title</title>
+</h:head>
+<h:body>
+
+	<h1>Standard Error messages</h1>
+
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputLabel value="carBean Id" for="Id" />
+			<h:inputText value="#{carBean.id}" id="Id" required="true"
+				label="carBean Id" />
+			<h:message for="Id" style="color: red" />
+
+			<h:outputLabel value="carBean Name" />
+			<h:inputText value="#{carBean.cname}" id="cname" label="carBean Name">
+				<f:validateLength minimum="5" maximum="10" for="cname" id="cname" />
+			</h:inputText>
+
+			<h:message for="cname" style="color: red" />
+			<h:outputLabel value="Mfd Date" for="mfddate" />
+			<h:inputText value="#{carBean.mfddate}" id="mfddate" label="Mfd Date">
+				<f:convertDateTime />
+			</h:inputText>
+			<h:message for="mfddate" style="color:red" />
+
+			<h:outputLabel value="Price" for="price" />
+			<h:inputText value="#{carBean.price}" id="price" label="Price">
+				<f:validateDoubleRange minimum="3.25" maximum="15.45" for="price" />
+			</h:inputText>
+			<h:message for="price" style="color:red" />
+
+			<h:outputLabel value="Engine" for="engine" />
+			<h:selectOneRadio value="#{carBean.engine}" id="engine"
+				required="true" label="engine">
+				<f:selectItem itemValue="Petrol" itemLabel="Petrol" />
+				<f:selectItem itemValue="Diesel" itemLabel="Diesel" />
+			</h:selectOneRadio>
+			<h:message id="message" for="engine" style="color:red" />
+
+			<h:commandButton action="error" value="Submit" />
+			<br />
+			<br />
+		</h:panelGrid>
+
+	</h:form>
+
+</h:body>
+</html>

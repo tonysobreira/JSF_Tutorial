@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Resource Bundle</title>
+</h:head>
+<h:body>
+	<h3>Resource Bundle Example</h3>
+	<f:view>
+		<f:loadBundle basename="com.messages.resourcebundle" var="res" />
+
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel value="#{res.name}"></h:outputLabel>
+				<h:inputText value="#{carBean.name}" id="name"></h:inputText>
+				<br />
+				<br />
+				<h:outputLabel value="#{res.id}"></h:outputLabel>
+				<h:inputText value="#{carBean.id}" id="id"></h:inputText>
+				<br />
+				<br />
+				<h:outputLabel value="#{res.color}"></h:outputLabel>
+				<h:inputText value="#{carBean.color}" id="color"></h:inputText>
+				<br />
+				<br />
+				<h:outputLabel value="#{res.model}"></h:outputLabel>
+				<h:inputText value="#{carBean.model}" id="model"></h:inputText>
+				<br />
+				<br />
+				<h:outputLabel value="#{res.registrationNumber}"></h:outputLabel>
+				<h:inputText value="#{carBean.registrationNumber}" id="registrationNumber"></h:inputText>
+				<br />
+				<br />
+
+				<h:commandButton action="#{carBean.clearAll()}" value="#{res.clear}"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+
+	</f:view>
+
+</h:body>
+</html>
